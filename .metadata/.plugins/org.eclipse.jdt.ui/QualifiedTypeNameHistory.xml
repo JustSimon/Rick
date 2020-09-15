@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.badlogic.gdx.math.Circle"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Button"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Preferences"/>
+<fullyQualifiedTypeName name="sun.applet.Main"/>
+<fullyQualifiedTypeName name="com.dre3m.utils.ScoreHandler"/>
+<fullyQualifiedTypeName name="com.google.example.games.basegameutils.GameHelper"/>
+</qualifiedTypeNameHistroy>

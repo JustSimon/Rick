@@ -1,0 +1,117 @@
+package com.dre3m.screens;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.dre3m.entities.BackgroundTile;
+
+public class Splash implements Screen {
+	
+	//variables\\Inherited values--
+	Game game;
+	
+	//variables\\Own values--
+	float hh;
+	int scrw, scrh;
+	int counter;
+	boolean show;
+	
+	SpriteBatch batch;
+	
+	Texture logo_texture, message_texture;
+	Sprite logo, message;
+	
+	ArrayList<BackgroundTile> BackTiles;
+	Iterator<BackgroundTile> BackIterator;
+	
+	
+	//method\\Constructor--
+	public Splash(Game game) {
+		this.game = game;
+	}
+	
+	//method\\Show--
+	@Override
+	public void show() {
+		hh = Gdx.graphics.getHeight() / 320f;
+		
+		scrh = Gdx.graphics.getHeight();
+		scrw = Gdx.graphics.getWidth();
+		
+		BackTiles = new ArrayList<BackgroundTile>();
+		
+		batch = new SpriteBatch();
+		
+		//textures\\Textures for random items--
+		logo_texture = new Texture(Gdx.files.internal("ui/logo.png"));
+		message_texture = new Texture(Gdx.files.internal("ui/TapToContinue.png"));
+		
+		//sprites\\Setup the random items--
+			//item 1\\Logo--
+			logo = new Sprite(logo_texture);
+			logo.setSize((float)(logo.getWidth() * hh * 1.5), (float)(logo.getHeight() * hh * 1.5));
+			logo.setOrigin(logo.getWidth() / 2, logo.getHeight() / 2);
+			logo.setPosition(scrw / 2 - logo.getWidth() / 2, scrh / 2 - logo.getHeight() / 2);
+			
+			//item 2\\Message--
+			message = new Sprite(message_texture);
+			message.setSize((float)(message.getWidth() * hh * 2.1), (float)(message.getHeight() * hh * 2.1));
+			message.setPosition(scrw / 2 - message.getWidth() / 2, scrh / 4);
+		
+		//values\\Default values--
+		counter = 0;
+		show = true;
+		
+		//backtiles\\Background setup
+		for (int i = 0; i < scrw + 128 * hh; i = (int)(i + 127 * hh)) {
+			for (int g = 0; g < scrh + 128 * hh; g = (int)(g + 127 * hh)) {
+				BackTiles.add(new BackgroundTile(i, g));
+			}
+		}
+		
+	}
+	
+	//method\\Render-- repeater
+	public void render(float delta) {update();draw();}
+
+		public void update() {
+			counter++;
+			
+			if (Gdx.input.isKeyPressed(Keys.BACK)) Gdx.app.exit();
+			if (Gdx.input.isTouched()) show = false;
+		}	
+		
+		public void draw() {
+			Gdx.gl20.glClearColor( 0, 0, 0, 1 );
+			Gdx.gl20.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
+			
+		}
+
+	//end repeater\\--
+	
+	//method\\Dispose--
+	public void dispose() {
+		
+	}
+
+	//method\\Resize--
+	public void resize(int width, int height) {}
+	
+	//method\\Pause--
+	public void pause() {}
+	
+	//method\\Resume--
+	public void resume() {}
+	
+	//method\\Hide--
+	@Override
+	public void hide() {}
+}
